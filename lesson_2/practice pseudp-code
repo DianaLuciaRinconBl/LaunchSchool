@@ -1,0 +1,43 @@
+1) a method that returns the sum of two integers
+
+ask the user for the first number
+save the number in a variable
+remember to convert the string to an integer
+
+ask the user for the second number
+save the number in a variable
+remember to convert the string to an integer
+
+print the sum of both numbers
+
+GET first number from user?
+SET the number to a variable = number1
+
+GET second number from user?
+SET the number to variable = number2
+
+PRINT number 1 + number2
+
+
+2) a method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+Given an array of strings
+
+create a method that passes that array
+create a variable to store an empty string
+iterate through each string in array
+insert each string to the store string
+
+set empty string
+Set method
+Iterate though array
+insert strings
+print concatenated string
+
+3) a method that takes an array of integers, and returns a new array with every other element
+
+initialise a new array
+create a method that takes an array of integers
+iterate through 2 element in this arrays at a time
+store only the first element in the new array
+pull both element out of the array 
