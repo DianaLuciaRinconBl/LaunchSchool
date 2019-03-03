@@ -38,6 +38,4 @@ print concatenated string
 
 initialise a new array
 create a method that takes an array of integers
-iterate through 2 element in this arrays at a time
-store only the first element in the new array
-pull both element out of the array 
+iterate through each element in this arrays
