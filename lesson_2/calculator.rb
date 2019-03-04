@@ -11,6 +11,12 @@ def valid_number?(num)
   num.to_i != 0 # =>this way we invalidate input number that are a 0 or a string because if we test a string on irb with the method to_i (example: "hi".to_i) this will return 0
 end
 
+#another more effective way to validate a number is:
+# def integer?(num)
+#   num.to_i.to_s == num
+# end
+#It will handle "0" correctly.
+
 def operation_to_message(op)
   case op # because this case statement is the last (and of course onyl one) expression in this method, it will automatically be returned therefore we do not have to add return statements to each strings
   when '1'
