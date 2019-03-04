@@ -1,18 +1,3 @@
-# mortgage Calculator
-# input
-#   - the loan amount (make sure it is a valid number)
-#   - the annual percentage rate (reformat the number, and convert the annual rate to a montly rate)
-#   - the loan duration (in months-so divide the number of years into 12 months and store in a variable)
-#
-# calculations
-#   - montly interest
-#   - loan duration
-#
-# output
-#   - montly payment
-
-
-
 def prompt(message)
   puts("=> #{message}")
 end
@@ -25,7 +10,6 @@ prompt "Welcome to the Mortgage Calculator"
 prompt "----------------------------------"
 
 loop do
-
   loan_amount = ''
   loop do
     prompt "Please enter the amount of the loan: "
@@ -45,11 +29,11 @@ loop do
 
     percentage_rate.delete!("%") if percentage_rate.include?("%")
 
-      if validate_number?(percentage_rate)
-        break
-      else
-        prompt "Please make sure you enter a valid number"
-      end
+    if validate_number?(percentage_rate)
+      break
+    else
+      prompt "Please make sure you enter a valid number"
+    end
   end
 
   loan_duration_years = ''
@@ -70,7 +54,7 @@ loop do
 
   montly_payment = loan_amount.to_f *
                    (montly_interest /
-                   (1 - (1 + montly_interest) ** (- loan_duration_months.to_i)))
+                   (1 - (1 + montly_interest)**-loan_duration_months.to_i))
 
   prompt "Your montly payment is $#{montly_payment.to_i}"
 
