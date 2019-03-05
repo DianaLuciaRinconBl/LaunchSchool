@@ -2,16 +2,20 @@ def prompt(message)
   puts("=> #{message}")
 end
 
+def valid_number(input)
+  input.to_i.real != 0 || input.to_f.real != 0
+end
+
 def valid_loan_amount?(amount)
   !amount.empty? && amount.to_i > 0
 end
 
 def valid_apr?(amount)
-  !amount.empty? && amount.to_f > 0 && amount.to_f != 0
+  !amount.empty? && amount.to_f >= 0
 end
 
 def valid_loan_duration?(amount)
-  !amount.empty? && amount.to_i == amount.to_f && amount.to_i != 0
+  !amount.empty? && amount.to_i == amount.to_f && amount.to_i > 0
 end
 
 prompt "Welcome to the Mortgage Calculator"
@@ -23,11 +27,10 @@ loop do
     prompt "Please enter the amount of the loan: "
     loan_amount = gets.chomp
 
-    if valid_loan_amount?(loan_amount)
+    if valid_loan_amount?(loan_amount) && valid_number(loan_amount)
       break
     else
-      prompt "Please make sure you have entered an amount and
-              that it is a positive number greater than 0"
+      prompt "WARNING Please make sure entered a value and that it is positive"
     end
   end
 
@@ -38,11 +41,10 @@ loop do
 
     percentage_rate.delete!("%") if percentage_rate.include?("%")
 
-    if valid_apr?(percentage_rate)
+    if valid_apr?(percentage_rate) && valid_number(percentage_rate)
       break
     else
-      prompt "Please make sure you have entered an annual
-              interest rate and that it is a positive number"
+      prompt "WARNING Please make sure entered a value and that it is positive"
     end
   end
 
@@ -51,11 +53,10 @@ loop do
     prompt "Please enter the loan duration in years: "
     loan_duration_years = gets.chomp
 
-    if valid_loan_duration?(loan_duration_years)
+    if valid_loan_duration?(loan_duration_years) && valid_number(loan_duration_years)
       break
     else
-      prompt "Please make sure you have entered a number
-              and that it is a positive number"
+      prompt "WARNING Please make sure entered a value and that it is positive"
     end
   end
 
