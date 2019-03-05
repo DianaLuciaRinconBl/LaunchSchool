@@ -74,9 +74,9 @@ loop do
   loop do
     answer = gets.chomp
 
-    if answer == 'yes'
+    if answer.downcase == 'yes'
       break
-    elsif answer == 'no'
+    elsif answer.downcase == 'no'
       break
     else
       prompt "Invalid input"
