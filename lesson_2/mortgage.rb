@@ -2,8 +2,16 @@ def prompt(message)
   puts("=> #{message}")
 end
 
-def validate_number?(amount)
-  amount.empty? == false && amount.to_i > 0
+def valid_loan_amount?(amount)
+  !amount.empty? && amount.to_i > 0
+end
+
+def valid_apr?(amount)
+  !amount.empty? && amount.to_f > 0 && amount.to_f != 0
+end
+
+def valid_loan_duration?(amount)
+  !amount.empty? && amount.to_i == amount.to_f && amount.to_i != 0
 end
 
 prompt "Welcome to the Mortgage Calculator"
@@ -15,10 +23,11 @@ loop do
     prompt "Please enter the amount of the loan: "
     loan_amount = gets.chomp
 
-    if validate_number?(loan_amount)
+    if valid_loan_amount?(loan_amount)
       break
     else
-      prompt "Please make sure you enter a valid loan amount"
+      prompt "Please make sure you have entered an amount and
+              that it is a positive number greater than 0"
     end
   end
 
@@ -29,10 +38,11 @@ loop do
 
     percentage_rate.delete!("%") if percentage_rate.include?("%")
 
-    if validate_number?(percentage_rate)
+    if valid_apr?(percentage_rate)
       break
     else
-      prompt "Please make sure you enter a valid number"
+      prompt "Please make sure you have entered an annual
+              interest rate and that it is a positive number"
     end
   end
 
@@ -41,10 +51,11 @@ loop do
     prompt "Please enter the loan duration in years: "
     loan_duration_years = gets.chomp
 
-    if validate_number?(loan_duration_years)
+    if valid_loan_duration?(loan_duration_years)
       break
     else
-      prompt "Please enter a valid number for the duration of the loan"
+      prompt "Please make sure you have entered a number
+              and that it is a positive number"
     end
   end
 
@@ -58,10 +69,22 @@ loop do
 
   prompt "Your montly payment is $#{montly_payment.to_i}"
 
-  prompt "Would you like to start a Mortgage calculation again: (y)"
-  answer = gets.chomp
+  answer = ''
+  prompt "Would you like to start a Mortgage calculation again: (yes or no)"
+  loop do
+    answer = gets.chomp
 
-  break unless answer.downcase.start_with?('y')
+    if answer == 'yes'
+      break
+    elsif answer == 'no'
+      break
+    else
+      prompt "Invalid input"
+      prompt "Would you like to start a Mortgage calculation again: (yes or no)"
+    end
+  end
+
+  break if answer.downcase == 'no'
 end
 
 prompt "Thank you for using the Mortgage Calculator"
