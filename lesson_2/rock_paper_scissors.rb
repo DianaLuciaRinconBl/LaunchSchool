@@ -1,9 +1,3 @@
-# VALID_CHOICES = { rock: "r",
-#                   paper: "p",
-#                   scissors: "sc",
-#                   spock: "sp",
-#                   lizard: "l" }
-
 VALID_CHOICES = { 'rock' => "r",
                   'paper' => "p",
                   'scissors' => "sc",
@@ -13,7 +7,6 @@ VALID_CHOICES = { 'rock' => "r",
 POINTS_TO_WIN = 5
 
 result = ''
-round = 0
 
 def clear_terminal
   system('clear') || system('cls')
@@ -112,7 +105,6 @@ loop do # Match loop
       choice = gets.chomp.downcase
 
       break if VALID_CHOICES.values.include?(choice)
-      #break if VALID_CHOICES.keys.include?(choice)
       prompt "Not a valid choice, try again!"
     end # end of user input loop only
 
@@ -131,7 +123,6 @@ loop do # Match loop
     break if player_won_match?(player_count) || computer_won_match?(computer_count)
 
     display_score(player_count, computer_count)
-
   end # end of match loop
 
   display_final_scores(player_count, computer_count)
@@ -145,9 +136,8 @@ loop do # Match loop
     if valid_play_again_input?(play_again)
       break
     else
-    prompt "Please enter: Y to keep playing or N to exit the game."
+      prompt "Please enter: Y to keep playing or N to exit the game."
     end
-
   end # end of Play again loop
 
   break unless play_again == "y"
