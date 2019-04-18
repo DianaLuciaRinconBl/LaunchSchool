@@ -1,3 +1,7 @@
+def prompt(msg)
+  puts "=> #{msg}"
+end
+
 def display_board(brd)
   puts ""
   puts "     |     |"
@@ -19,6 +23,18 @@ def initialize_board
   (1..9).each {|num| new_board[num] = " "}
   new_board
 end
+
+def player_places_piece(brd)
+
+
+  loop do
+    prompt "Choose a square (1-9):"
+    square = gets.chomp.to_i
+  end
+
+    brd[square] = 'X'
+end
+
 
 board = initialize_board
 display_board(board)
